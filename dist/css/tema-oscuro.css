@@ -93,4 +93,24 @@ pre[class^=cod-] {
   color: #ff8800 !important;
 }
 
+.show-ajava {
+  color: #14f178 !important;
+  font-weight: 500;
+}
+
+.show-sobre {
+  color: #c9c9c9 !important;
+  font-style: italic;
+}
+
+.show-met {
+  color: #ffb005 !important;
+  font-weight: 500;
+}
+
+.show-retorno {
+  color: white !important;
+  font-weight: 600;
+}
+
 /*# sourceMappingURL=tema-oscuro.css.map */

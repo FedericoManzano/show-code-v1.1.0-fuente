@@ -8,6 +8,8 @@
 import CodigoHtml from "./modulos/CodigoHtml"
 import CodigoCss from "./modulos/CodigoCss"
 import CodigoJs from "./modulos/CodigoJs"
+import CodigoJava from "./modulos/CodigoJava"
+
 
 (function() {
     const ShowHtml = (conf) => {
@@ -22,11 +24,15 @@ import CodigoJs from "./modulos/CodigoJs"
         CodigoJs.iniciar()
     }
 
+    const ShowJava = () => {
+        CodigoJava.iniciar()
+    }
 
     const Show = {
         ShowHtmlInit: (conf) => ShowHtml(conf),
         ShowCssInit: () => ShowCss(),
-        ShowJsInit: () => ShowJs()
+        ShowJsInit: () => ShowJs(),
+        ShowJavaInit: () =>  ShowJava()
     }
 
     window.Show = Show

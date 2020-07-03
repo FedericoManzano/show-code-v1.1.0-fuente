@@ -3,7 +3,7 @@
 
 pre[class^=cod-] {
     background-color: rgb(245, 245, 245) !important;
-    color: rgb(49, 56, 66) !important;
+    color: black
     
 }
 
@@ -36,7 +36,7 @@ pre[class^=cod-] {
 
 .show-neutro {
     color: black !important;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 /**
@@ -96,3 +96,21 @@ pre[class^=cod-] {
     color: rgb(255, 0, 0) !important;
 }
 
+.show-ajava {
+    color: rgb(2, 126, 58) !important;
+    font-weight: 500;
+}
+.show-sobre {
+    color: rgb(83, 83, 83) !important;
+    font-style: italic;
+}
+
+.show-met {
+    color: rgb(136, 29, 104) !important;
+    font-weight: 500;
+}
+
+.show-retorno {
+    color: rgb(0, 0, 0) !important;
+    font-weight: 600;
+}

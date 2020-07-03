@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="stylesheet" href="../dist/css/tema-oscuro.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <pre class="cod-java">
+        package com.federico.chat.modelos;
+
+
+        public class Usuario{
+            private String nombreUsuario;
+            private String ip;
+            
+            
+            public Usuario(String nombreUsuario, String ip) {
+                this.nombreUsuario = nombreUsuario;
+                this.ip = ip;
+            }
+        
+        
+            public String getNombreUsuario() {
+                return nombreUsuario;
+            }
+        
+        
+            public void setNombreUsuario(String nombreUsuario) {
+                this.nombreUsuario = nombreUsuario;
+            }
+        
+        
+            public String getIp() {
+                return ip;
+            }
+        
+        
+            public void setIp(String ip) {
+                this.ip = ip;
+            }
+        
+            @Override
+            public boolean equals(Object obj) {
+                if (this == obj)
+                    return true;
+                if (obj == null)
+                    return false;
+                if (getClass() != obj.getClass())
+                    return false;
+                Usuario other = (Usuario) obj;
+                if (nombreUsuario == null) {
+                    if (other.nombreUsuario != null)
+                        return false;
+                } else if (!nombreUsuario.equals(other.nombreUsuario))
+                    return false;
+                return true;
+            }
+        }
+    </pre>
+    
+
+    <script src="../dist/js/sintax.js"></script>
+    <script>Show.ShowJavaInit()</script>
+</body>
+</html>
