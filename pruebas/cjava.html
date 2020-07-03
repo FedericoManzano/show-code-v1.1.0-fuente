@@ -11,55 +11,56 @@
 <body>
 
     <pre class="cod-java">
-        package com.federico.chat.modelos;
+        package com.federico.chat.chat;
 
-
-        public class Usuario{
-            private String nombreUsuario;
-            private String ip;
+        import java.io.IOException;
+        import java.util.LinkedList;
+        
+        import javax.swing.JOptionPane;
+        
+        import com.federico.chat.comandos.ComandoEscucha;
+        import com.federico.chat.mensajeria.Paquete;
+        import com.federico.chat.modelos.Conversacion;
+        import com.google.gson.Gson;
+        
+        public class EscuchaMensajes extends Thread{
+            
+            private Chat chat;
+            private Gson gson = new Gson();
             
             
-            public Usuario(String nombreUsuario, String ip) {
-                this.nombreUsuario = nombreUsuario;
-                this.ip = ip;
+            public EscuchaMensajes(Chat chat) {
+                this.chat = chat;
             }
-        
-        
-            public String getNombreUsuario() {
-                return nombreUsuario;
+            
+            
+            public void run() {
+                ComandoEscucha comando;
+                Paquete paquete;
+                String cadenaLeida;
+                while(true) {
+                    try {
+                        cadenaLeida = (String) chat.getEntrada().readObject();
+                        paquete = gson.fromJson(cadenaLeida, Paquete.class);
+                        comando = (ComandoEscucha) paquete.devolverComando(paquete.dameOperacion());
+                        comando.guardaCadenaLeida(cadenaLeida);
+                        comando.setChat(chat);
+                        comando.ejecutar();
+                        actualizarListado();
+                    } catch (ClassNotFoundException | IOException e) {
+                        JOptionPane.showMessageDialog(chat.getMenuGeneral(), "Desconectado del servidor");
+                    }
+                }
             }
-        
-        
-            public void setNombreUsuario(String nombreUsuario) {
-                this.nombreUsuario = nombreUsuario;
+            
+            public void actualizarListado() {
+                LinkedList<Conversacion> listado = chat.dameListadoDeConversaciones();
+                chat.getMenuGeneral().vaciarListado();
+                for(Conversacion co : listado)
+                    chat.getMenuGeneral().actualizarListaConectados(co.getUsuarioExterno());
+                chat.getMenuGeneral().dameCantidadElementos();
             }
-        
-        
-            public String getIp() {
-                return ip;
-            }
-        
-        
-            public void setIp(String ip) {
-                this.ip = ip;
-            }
-        
-            @Override
-            public boolean equals(Object obj) {
-                if (this == obj)
-                    return true;
-                if (obj == null)
-                    return false;
-                if (getClass() != obj.getClass())
-                    return false;
-                Usuario other = (Usuario) obj;
-                if (nombreUsuario == null) {
-                    if (other.nombreUsuario != null)
-                        return false;
-                } else if (!nombreUsuario.equals(other.nombreUsuario))
-                    return false;
-                return true;
-            }
+            
         }
     </pre>
     

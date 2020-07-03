@@ -213,6 +213,10 @@ import $ from "jquery"
             resultado = resultado.replace(/false /g, "<span class='show-res'>false </span>")
             resultado = resultado.replace(/new /g, "<span class='show-res'>new </span>")
 
+
+
+            resultado = resultado.replace(/try/g, "<span class='show-control'>try</span>")
+            resultado = resultado.replace(/catch/g, "<span class='show-control'>catch</span>")
             resultado = resultado.replace(/if/g, "<span class='show-control'>if</span>")
             resultado = resultado.replace(/int/g, "<span class='show-control'>int</span>")
             resultado = resultado.replace(/double/g, "<span class='show-control'>double</span>")
