@@ -1,0 +1,98 @@
+@import "generales";
+
+
+pre[class^=cod-] {
+    background-color: rgb(245, 245, 245) !important;
+    color: rgb(49, 56, 66) !important;
+    
+}
+
+
+/**
+    HTML
+*/
+.show-eti {
+    color: rgb(0, 83, 160) !important;
+    font-weight: 500;
+}
+
+.show-ang {
+    color: rgb(43, 43, 43) !important;
+    font-weight: 500;
+}
+
+.show-attr {
+    color: rgb(91, 0, 114) !important;
+    font-weight: 500;
+}
+
+.show-string {
+    color: rgb(252, 0, 0) !important;
+}
+
+.show-com {
+    color: rgb(0, 110, 24) !important;
+}
+
+.show-neutro {
+    color: black !important;
+    font-weight: 500;
+}
+
+/**
+    CSS
+*/
+
+.show-selectores {
+    color: rgb(216, 53, 31) !important;
+}
+
+.show-claves {
+    color: rgb(101, 0, 168) !important;
+    font-weight: 500;
+}
+
+.show-prop {
+    color: rgb(0, 101, 168) !important;
+    
+}
+
+.show-valor {
+    color: rgb(165, 93, 0) !important;
+}
+
+.show-llaves {
+    color: rgb(0, 0, 0) !important;
+}
+
+
+
+.show-res {
+    color: rgb(0, 81, 187) !important;
+    font-weight: 600;
+}
+
+.show-nombres {
+    color: rgb(175, 106, 27) !important;
+}
+
+.show-control {
+    color: rgb(91, 0, 196) !important;
+    font-weight: 500;
+}
+
+
+.show-op {
+    color: rgb(4, 160, 100) !important;
+    font-weight: 500;
+}
+
+.show-sistema {
+    color: rgb(184, 53, 53) !important;
+    font-weight: 500;
+}
+
+.show-numeros {
+    color: rgb(255, 0, 0) !important;
+}
+

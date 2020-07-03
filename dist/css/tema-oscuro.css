@@ -1,0 +1,96 @@
+/*!
+ * Show Code v1.0.0
+ * Copyright Federico Manzano
+ * Licencia MIT
+ * Repositorio (https://github.com/FedericoManzano/show-code-v1.0.0-fuente)
+ */
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap");
+pre[class^=cod-] {
+  padding-top: 20px;
+  overflow: auto;
+  font-family: "Source Code Pro";
+  font-weight: 400;
+  background-color: white !important;
+  color: black !important;
+  font-size: 1em;
+}
+
+pre[class^=cod-] {
+  background-color: #10151a !important;
+  color: #b3b3b3 !important;
+}
+
+.show-eti {
+  color: #ff1f1f !important;
+}
+
+.show-ang {
+  color: white !important;
+  font-weight: 500;
+}
+
+.show-attr {
+  color: #00c99d !important;
+}
+
+.show-string {
+  color: #ff8800 !important;
+}
+
+.show-com {
+  color: #45d164 !important;
+}
+
+/**
+    CSS
+*/
+.show-selectores {
+  color: #ffe135 !important;
+}
+
+.show-claves {
+  color: #c46cff !important;
+  font-weight: 500;
+}
+
+.show-prop {
+  color: #5bbdff !important;
+}
+
+.show-valor {
+  color: #fda027 !important;
+}
+
+.show-llaves {
+  color: white !important;
+}
+
+.show-res {
+  color: #cf2727 !important;
+  font-weight: 500;
+}
+
+.show-nombres {
+  color: #af6a1b !important;
+}
+
+.show-control {
+  color: #dc2dff !important;
+  font-weight: 500;
+}
+
+.show-op {
+  color: #04a064 !important;
+  font-weight: 500;
+}
+
+.show-sistema {
+  color: #00ce7f !important;
+  font-weight: 500;
+}
+
+.show-numeros {
+  color: #ff8800 !important;
+}
+
+/*# sourceMappingURL=tema-oscuro.css.map */
