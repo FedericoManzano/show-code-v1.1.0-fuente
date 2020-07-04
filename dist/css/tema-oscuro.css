@@ -17,7 +17,7 @@ pre[class^=cod-] {
 
 pre[class^=cod-] {
   background-color: #10151a !important;
-  color: #b3b3b3 !important;
+  color: #c5c5c5 !important;
 }
 
 .show-eti {
@@ -100,7 +100,7 @@ pre[class^=cod-] {
 
 .show-ajava {
   color: #14f178 !important;
-  font-weight: 500;
+  font-weight: 300;
 }
 
 .show-sobre {
@@ -118,8 +118,22 @@ pre[class^=cod-] {
   font-weight: 600;
 }
 
+.show-llamadas {
+  color: #e04204 !important;
+  font-weight: 300;
+}
+
+.show-objetos {
+  color: #005a7e !important;
+  font-weight: 600;
+}
+
 .show-json {
   color: #22d6d6 !important;
+}
+
+.show-error {
+  color: red !important;
 }
 
 /*# sourceMappingURL=tema-oscuro.css.map */

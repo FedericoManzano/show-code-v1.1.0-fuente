@@ -2,7 +2,7 @@
 
 
 pre[class^=cod-] {
-    background-color: rgb(245, 245, 245) !important;
+    background-color: rgb(230, 230, 230) !important;
     color: black;
     font-weight: 300 !important;
 }
@@ -101,12 +101,13 @@ pre[class^=cod-] {
     font-weight: 500;
 }
 .show-sobre {
-    color: rgb(83, 83, 83) !important;
+    color: rgb(46, 46, 46) !important;
     font-style: italic;
+    font-weight: 400;
 }
 
 .show-met {
-    color: rgb(136, 29, 104) !important;
+    color: rgb(13, 112, 63) !important;
     font-weight: 500;
 }
 
@@ -117,4 +118,13 @@ pre[class^=cod-] {
 
 .show-json {
     color: rgb(0, 75, 214) !important;
+}
+
+.show-error {
+    color: red !important;
+}
+
+.show-llamadas {
+    color: rgb(0, 107, 75) !important;
+    font-weight: 300;
 }
