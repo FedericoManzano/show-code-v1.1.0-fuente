@@ -124,4 +124,8 @@ pre[class^=cod-] {
   font-weight: 600;
 }
 
+.show-json {
+  color: #004bd6 !important;
+}
+
 /*# sourceMappingURL=tema-claro.css.map */

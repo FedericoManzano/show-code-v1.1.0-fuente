@@ -118,4 +118,8 @@ pre[class^=cod-] {
   font-weight: 600;
 }
 
+.show-json {
+  color: #22d6d6 !important;
+}
+
 /*# sourceMappingURL=tema-oscuro.css.map */

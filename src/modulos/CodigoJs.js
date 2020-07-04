@@ -60,7 +60,7 @@ import $ from "jquery"
     }
 
     const colrearJson = (codigo) => {
-        let met = /{( *\n* *[a-zA-Z]+: *"{0,1}[a-zA-Z]+"* *,*)+ *\n* *\n* *}/
+        let met = /{[\t ]*\n*[\t ]*(\n*[\t ]*[a-zA-Z0-9]+(:[\t ]*"*.+"*)*,*[\t\n ]*)+ *[\t ]*\n*}/
         let bus = codigo.search(met)
         let pal = ""
         let aux = codigo.substring(bus, codigo.length)
@@ -83,7 +83,7 @@ import $ from "jquery"
                 i ++
             }
 
-            codigo = codigo.replace(pal, `<span class='show-met'>${pal}</span>`)
+            codigo = codigo.replace(pal, `<span class='show-json'>${pal}</span>`)
             aux = aux.substring(i + 1, aux.length)
            
             bus = aux.search(met)
@@ -129,6 +129,42 @@ import $ from "jquery"
         return codigo
     }
 
+
+    const colorearNombreFuncion = (codigo) => {
+        let met = /function[\t ]+[a-zA-Z0-9-_\$]+[\t ]*\([\t ]*.*[\t ]*\)[\t ]*{/
+        let bus = codigo.search(met)
+        let pal = ""
+        let aux = codigo.substring(bus, codigo.length)
+        let i = 0
+       
+
+        while(bus !== -1) { 
+            pal = ""
+          
+            while(aux[i] !== ' ' && i < aux.length) {
+                i ++
+            }
+
+            while(aux[i] === ' ' && i < aux.length) {
+                i ++
+            }
+           
+            while(aux[i] !== '(') {
+                pal += aux[i]
+                i ++
+            }
+
+            codigo = codigo.replace(pal, `<span class='show-met'>${pal}</span>`)
+               
+            aux = aux.substring(i + 1, aux.length)
+           
+            bus = aux.search(met)
+            i = bus
+        }
+
+        return codigo
+    }
+
     const inicializar = () => {
         $(".cod-js").each((index, e) => {
             let codigo = $(e).html()
@@ -137,9 +173,9 @@ import $ from "jquery"
             
             let resultado = colorearCadenas(codigo)
             resultado = colorearComentarios(resultado)
-            resultado = colrearJson(resultado)
+           //resultado = colrearJson(resultado)
             resultado = colorearNombre(resultado)
-            
+            resultado = colorearNombreFuncion(resultado)
            
             resultado = resultado.replace(/=&gt;/g, "<span class='show-res'>=></span>")
             resultado = resultado.replace(/const /g, "<span class='show-res'>const </span>")
