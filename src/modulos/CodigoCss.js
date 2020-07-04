@@ -83,18 +83,22 @@ import $ from "jquery"
     }
 
     const esComentario = (codigo, pos) => {
-        return codigo[pos] === '/'
+        return codigo[pos] === '/' && codigo[pos + 1] === '*'
     } 
 
     const colorearComentario = (codigo, resultado, pos) => {
         resultado += "<span class='show-com'>" + codigo[pos] + "</span>"
         pos ++ 
-        while(!esComentario(codigo, pos) && pos < codigo.length ) {
+        resultado += "<span class='show-com'>" + codigo[pos] + "</span>"
+        pos ++ 
+        while(codigo.substring(pos, pos+2) !== "*/" && pos < codigo.length ) {
             resultado += "<span class='show-com'>" + codigo[pos] + "</span>"
             pos ++ 
         }
 
-        if(esComentario(codigo, pos)) {
+        if(codigo[pos] === '*' && codigo[pos + 1] === '/') {
+            resultado += "<span class='show-com'>" + codigo[pos] + "</span>"
+            pos ++ 
             resultado += "<span class='show-com'>" + codigo[pos] + "</span>"
             pos ++ 
         }
