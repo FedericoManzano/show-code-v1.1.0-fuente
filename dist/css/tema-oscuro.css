@@ -16,6 +16,7 @@ pre[class^=cod-] {
 }
 pre[class^=cod-] .numeracion {
   position: absolute;
+  border-right: 2px solid #01db92;
   left: 0;
   top: 0;
   bottom: 0;
@@ -36,7 +37,6 @@ pre[class^=cod-] {
   color: #c5c5c5 !important;
 }
 pre[class^=cod-] .numeracion {
-  border-right: 2px solid #ff310d;
   background-color: #10151a;
 }
 pre[class^=cod-] .numeracion span {

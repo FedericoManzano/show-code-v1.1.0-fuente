@@ -16,23 +16,23 @@ import CodigoJava from "./modulos/CodigoJava"
         CodigoHtml.iniciar(conf)
     }
 
-    const ShowCss = () => {
-        CodigoCss.iniciar()
+    const ShowCss = (conf) => {
+        CodigoCss.iniciar(conf)
     }
 
-    const ShowJs = () => {
-        CodigoJs.iniciar()
+    const ShowJs = (conf) => {
+        CodigoJs.iniciar(conf)
     }
 
-    const ShowJava = () => {
-        CodigoJava.iniciar()
+    const ShowJava = (conf) => {
+        CodigoJava.iniciar(conf)
     }
 
     const Show = {
         ShowHtmlInit: (conf) => ShowHtml(conf),
-        ShowCssInit: () => ShowCss(),
-        ShowJsInit: () => ShowJs(),
-        ShowJavaInit: () =>  ShowJava()
+        ShowCssInit: (conf) => ShowCss(conf),
+        ShowJsInit: (conf) => ShowJs(conf),
+        ShowJavaInit: (conf) =>  ShowJava(conf)
     }
 
     window.Show = Show
