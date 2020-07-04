@@ -1,4 +1,5 @@
 import $ from "jquery"
+import numerar from "./Numeracion"
 
 
 (function () {
@@ -225,13 +226,15 @@ import $ from "jquery"
         return codigo
     }
 
-    const inicializar = () => {
+    const inicializar = ({lineas = true}={}) => {
 
         $(".cod-java").each((index, e) => {
             let codigo = $(e).html()
             $(e).text(codigo)
             let resultado = codigo
-
+            
+            
+            
             resultado = colorearCadenas(resultado)
             resultado = colorearComentarios(resultado)
             resultado = colrearMetodo(resultado)
@@ -327,14 +330,16 @@ import $ from "jquery"
             resultado = resultado.replace(/9/g, "<span class='show-numeros'>9</span>")
 
             $(e).html(resultado)
+            if(lineas)
+                numerar(e, codigo)
         })
     }
 
     
 
     const CodigoJava = {
-        iniciar: () => {
-            inicializar()
+        iniciar: (config) => {
+            inicializar(config)
         }
     }
 

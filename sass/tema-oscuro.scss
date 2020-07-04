@@ -6,6 +6,16 @@
 pre[class^=cod-] {
     background-color: rgb(16, 21, 26) !important;
     color: rgb(197, 197, 197) !important;
+
+    .numeracion {
+        border-right: 2px solid rgb(255, 49, 13);
+        background-color: rgb(16, 21, 26);
+        span {
+            background-color: rgb(16, 21, 26);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.178);
+            color: rgb(197, 197, 197) !important;
+        }
+    }
 }
 
 

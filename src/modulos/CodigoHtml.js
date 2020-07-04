@@ -1,5 +1,5 @@
 import $ from "jquery"
-
+import numerar from "./Numeracion"
 
 (function () {
 
@@ -130,12 +130,12 @@ import $ from "jquery"
         return resultado
     }
     
-    const inicializar = (config = "html") => {
+    const inicializar = ({tipo = "html", lineas = true} = {}) => {
 
         $(".cod-html").each((index, e) => { 
             let codigo = ""
            
-            if(config === "html") {
+            if(tipo === "html") {
                 codigo = $(e).html()
                 $(e).text(codigo)
             } else {
@@ -160,6 +160,8 @@ import $ from "jquery"
             }
 
             $(e).html(resultado)
+            if(lineas) 
+                numerar(e, codigo)
         })
     }
 

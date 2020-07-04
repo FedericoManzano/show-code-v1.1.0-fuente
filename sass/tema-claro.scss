@@ -2,9 +2,19 @@
 
 
 pre[class^=cod-] {
-    background-color: rgb(230, 230, 230) !important;
+    background-color: rgb(240, 240, 240) !important;
     color: black;
     font-weight: 300 !important;
+
+    .numeracion {
+        border-right: 2px solid rgb(0, 73, 92);
+        background-color: rgb(240, 240, 240);
+        span {
+            background-color: rgb(240, 240, 240);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.178);
+            color: rgb(39, 39, 39);
+        }
+    }
 }
 
 
