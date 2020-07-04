@@ -66,7 +66,36 @@ import $ from "jquery"
         
         return codigo
     }
-
+    const colorearComentarios = (codigo) => {
+        let resultado = ""
+        for(var i = 0; i < codigo.length; i ++ ){ 
+            if(codigo[i] === '/' && codigo[i + 1] === '/') {
+                resultado += "<span class='show-com'>" + codigo[i] + "</span>"
+                i ++ 
+                while(codigo[i] !== '\n' && i < codigo.length) {
+                    resultado += "<span class='show-com'>" + codigo[i] + "</span>"
+                    i ++ 
+                }
+                resultado +=  codigo[i] 
+            } else if(codigo[i] === '/' && codigo[i + 1] === '*') {
+                resultado += "<span class='show-com'>" + codigo[i] + "</span>"
+                i ++ 
+                while(codigo[i] !== '/' && i < codigo.length) {
+                    resultado += "<span class='show-com'>" + codigo[i] + "</span>"
+                    i ++ 
+                }
+                if(codigo[i] === '/' ) {
+                    resultado += "<span class='show-com'>" + codigo[i] + "</span>"
+                    i ++ 
+                }
+                resultado +=  codigo[i] 
+            }
+            else {
+                resultado +=  codigo[i] 
+            }
+        }
+        return resultado
+    }
 
     const colorearAttr = (codigo) => {
         let met = /this\.[a-zA-Z]+[ =;]+/
@@ -181,6 +210,7 @@ import $ from "jquery"
             let resultado = codigo
             
             resultado = colorearCadenas(resultado)
+            resultado = colorearComentarios(resultado)
             resultado = colrearMetodo(resultado)
             resultado = colorearAttr(resultado)
             resultado = colorearVarClases(resultado)
@@ -241,7 +271,7 @@ import $ from "jquery"
             resultado = resultado.replace(/break/g, "<span class='show-control'>break</span>")
 
 
-            resultado = resultado.replace(/!/g, "<span class='show-op'>!</span>")
+            resultado = resultado.replace(/!/g, "<span class='show-res'>!</span>")
             
 
             resultado = resultado.replace(/console\./g, "<span class='show-sistema'>console</span><span class='show-neutro'>.</span>")
@@ -255,8 +285,8 @@ import $ from "jquery"
             resultado = resultado.replace(/\+/g, "<span class='show-neutro'>+</span>")
             resultado = resultado.replace(/{/g, "<span class='show-neutro'>{</span>")
             resultado = resultado.replace(/}/g, "<span class='show-neutro'>}</span>")
-            resultado = resultado.replace(/&amp;&amp;/g, "<span class='show-neutro'>&&</span>")
-            resultado = resultado.replace(/\|/g, "<span class='show-neutro'>|</span>")
+            resultado = resultado.replace(/&amp;&amp;/g, "<span class='show-res'>&&</span>")
+            resultado = resultado.replace(/\|/g, "<span class='show-res'>|</span>")
             resultado = resultado.replace(/===/g, "<span class='show-neutro'>===</span>")
             resultado = resultado.replace(/[^show-]\-/g, "<span class='show-neutro'>-</span>")
             resultado = resultado.replace(/[^class=]=/g, "<span class='show-neutro'>=</span>")

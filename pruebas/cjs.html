@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <link rel="stylesheet" href="../dist/css/tema-claro.css">
+    <link rel="stylesheet" href="../dist/css/tema-oscuro.css">
     <title>Document</title>
 </head>
 <body>
@@ -13,129 +13,295 @@
     <pre class="cod-js">
 
         import $ from 'jquery'
-        import ERR from "./Errores"
+        import ERR from "./GestionErrores"
+        
+        (function(){
+        
+            // Elemento tips
+            var elemento = null;
+        
+            // Separación del tips respecto al origen
+            const margin = 10
         
         
-        class Coleccion {
+            const posicionamientoInicialX = (origen)=> {
+                var x = $(origen).offset().left
+                $(elemento).css("left", x)
+                return x
+            }
         
-            destroy(contexto) {
-                $(contexto + " .l-colapso .lista-item").off()
+            const posicionamientoInicialY = (origen)=> {
+                var y = $(origen).offset().top
+                $(elemento).css("top", y)
+                return y
             }
         
         
-            acordeon(c) {
-                $(c.contexto + " .l-colapso .lista-item").each(function () {
-                    if (!$(this).hasClass("desactivado") && $($(this)).data("target") !== undefined) {
-                        $(this).append("<i class='f-derecha'></i>");
-                        $(this).append("<i class='f-abajo'></i>");
-        
-                        $(this).children(".f-derecha").css("border-left", "5px solid " + c.colorFlechas)
-                        $(this).children(".f-derecha").css("border-bottom", "5px solid transparent")
-                        $(this).children(".f-derecha").css("border-top", "5px solid transparent")
         
         
-                        $(this).children(".f-abajo").css("border-top", "5px solid " + c.colorFlechas)
-                        $(this).children(".f-abajo").css("border-left", "5px solid transparent")
-                        $(this).children(".f-abajo").css("border-right", "5px solid transparent")
-        
-        
-                        $(this).children(".f-derecha").css("top", 13);
-                        $(this).children(".f-abajo").css("top", 13);
-        
-                        $(this).children(".f-abajo").hide();
-                        $(c.contexto + " .l-colapso > .desplegable").hide();
-                    }
-                })
+            /**
+             * Validación del espacio encima del elemento origen 
+             * respecto al elemento toolTips 
+             * @param {Elemento origen del efecto hover} origen 
+             * @return true / false
+             */
+            const arriba = (origen) => {
+                const offsetTopOrigen = $(origen).offset().top
+                const wScrollTop = $(window).scrollTop() 
+                const tipsHeight = $(elemento).outerHeight()
+                return offsetTopOrigen - wScrollTop >  tipsHeight + margin
             }
         
         
-            desplegable(c) {
-        
-                var cerrarTodos = () => {
-                    $(c.contexto + " .l-colapso .lista-item").each(function () {
-                        $(($(this)).data("target")).slideUp(300)
-                        $(this).children(".f-abajo").hide()
-                        $(this).children(".f-derecha").show()
-                    })
-                }
-        
-                $(c.contexto + " .l-colapso .lista-item").click(function () {
-                    if ($(this).hasClass("desactivado"))
-                        return
-                    cerrarTodos(c)
-                    var desplegable = $($(this).data("target"))
-                    if ($(desplegable).is(":visible")) {
-                        $(this).children(".f-abajo").hide()
-                        $(this).children(".f-derecha").show()
-                        $(desplegable).slideUp(300)
-                    } else {
-                        $(this).children(".f-derecha").hide()
-                        $(this).children(".f-abajo").show()
-                        $(desplegable).slideDown(300)
-                    }
-                })
+            /**
+             * Validación del espacio debajo del elemento origen 
+             * respecto al elemento toolTips 
+             * @param {Elemento origen del efecto hover} origen 
+             * @return true / false
+             */
+            const abajo = (origen) => {
+                const windowHeight = $(window).height()
+                const wScrollTop = $(window).scrollTop() 
+                const origenOffsetTop = $(origen).offset().top
+                const origenHeight = $(origen).outerHeight()
+                const tipsHeight = $(elemento).outerHeight()
+                return windowHeight + wScrollTop - 
+                        (origenOffsetTop + origenHeight)  
+                                        > tipsHeight + margin
             }
         
-            cargarConfiguracion(c) {
         
-                $(c.contexto + " .lista-contenedor").addClass(c.colorFondo)
-                $(c.contexto + " .lista-item").addClass(c.colorFondo)
-                $(c.contexto + " a").addClass(c.colorTexto)
-                $(c.contexto + " p").addClass(c.colorTexto)
-                $(c.contexto + " b").addClass(c.colorTexto)
-                $(c.contexto + " i").addClass(c.colorTexto)
-                $(c.contexto + " .lista-cabecera").addClass(c.colorTexto)
-                $(c.contexto + " .lista-pie").addClass(c.colorTexto)
-                $(c.contexto + " .lista-contenedor .desplegable ul li a").addClass(c.colorTexto)
+            /**
+             * Validación del espacio derecha del elemento origen 
+             * respecto al elemento toolTips 
+             * @param {Elemento origen del efecto hover} origen 
+             * @return true / false
+             */
+            const derecha = (origen) => {
+                const windowWidth = $(window).width()
+                const origenOffsetLeft = $(origen).offset().left
+                const origenWidth = $(origen).width()
+                const tipsWidth = $(".tips").width()
+                return windowWidth - origenOffsetLeft - origenWidth - 80 > tipsWidth + 5
             }
         
-            validarConfig(c) {
-                const MODULO = "Error bodystyle dice: M03"
-                if (!ERR.id.validacion.test(c.contexto)) {
-                    console.log(MODULO + ERR.id.mensaje)
+        
+            /**
+             * Validación del espacio izquierda del elemento origen 
+             * respecto al elemento toolTips 
+             * @param {Elemento origen del efecto hover} origen 
+             * @return true / false
+             */
+            const izquierda = (boton) => {
+                return $(boton).offset().left > $(".tips").width() + 5
+            }
+        
+        
+            /**
+             * Validar los datos de entrada posición e información
+             * @param {Posición del tips } posicion 
+             * @param {Info a mostrar por el tips} info 
+             */
+            const validarTips = (posicion, info) => {
+                if( !ERR.posicion.val(posicion)) {
+                    console.error("(TOOLTIPS)" + ERR.posicion.mje + " En formato [string]")
                     return false
                 }
-        
-                if (!ERR.clasesColorFondo.validacion.test(c.colorFondo)) {
-                    console.log(MODULO + ERR.clasesColorFondo.mensaje)
+                        
+                if(!ERR.info.val(info)) {
+                    console.error("(TOOLTIPS)" + ERR.info.mje + " Revise el attr data-tips='[info]'") 
                     return false
                 }
-        
-                if (!ERR.clasesColorTexto.validacion.test(c.colorTexto)) {
-                    console.log(MODULO + ERR.clasesColorTexto.mensaje)
-                    return false
-                }
-        
-                if (!ERR.hexadecimal.validacion.test(c.colorFlechas)) {
-                    console.log(MODULO + ERR.hexadecimal.mensaje)
-                    return false
-                }
-        
+                    
                 return true
-        
             }
         
         
-            iniciar(
-                { contexto = "SinContexto", colorFondo = "fd-blanco", colorTexto = "c-negro", colorFlechas = "#000" } = {}) {
-        
-                var c = {
-                    contexto: contexto,
-                    colorFondo: colorFondo,
-                    colorTexto: colorTexto,
-                    colorFlechas: colorFlechas
-                }
-                if (!this.validarConfig(c)) {
-                    return
-                }
-        
-                this.cargarConfiguracion(c)
-                this.acordeon(c)
-                this.desplegable(c)
+            var dameMueca = (clase, pos1, valor1, pos2, valor2) => {
+                var mueca = $("<span class='"+ clase +"'></span>")
+                mueca.css(pos1, valor1)
+                mueca.css(pos2, valor2)
+                return mueca
             }
-        }
         
-        export default Coleccion
+            var reacomodamientoHorizontal = (origen)=> {
+                var corr = ($(origen).outerWidth() ) - $(elemento).outerWidth()
+                return posicionamientoInicialX(origen) +  Math.round(corr / 2)
+            }
+        
+            var reacomodamientoVertical = (origen)=> {
+                var corr = ($(origen).outerHeight() ) - $(elemento).outerHeight()
+                return posicionamientoInicialY(origen) + Math.round(corr / 2)
+            }
+        
+            var topeIzquierda = ()=> {
+                const despIzq = $(elemento).offset().left
+                return despIzq <= 0 ? despIzq*-1 : 0
+            }
+        
+            var topeArriba = ()=> {
+                const despArr = $(elemento).offset().top - $(window).scrollTop()
+                return despArr <= 0 ? (despArr - margin)*-1 : 0
+            }
+        
+            var topeDerecha = ()=> {
+                const despDer = $(window).width() - $(elemento).offset().left - $(elemento).outerWidth()
+                return despDer <= 0 ? Math.round((despDer - margin)) : 0
+            }
+        
+        
+            var posicionamientoArriba = (origen) => {
+        
+                /** Coloacar el elemento por encima del origen */
+                elemento.css("top", reacomodamientoVertical(origen) - $(elemento).outerHeight() - 5)
+                elemento.append(dameMueca("mueca-aba","bottom", -5, "left", "calc(50% - 2.5px)"))
+        
+                // Calculo del offset respecto a la derecha y a la izquierda 
+                // del elemento
+                var di = topeIzquierda()
+                var td = topeDerecha() 
+        
+                if(di !== 0){
+                    elemento.css("left",  reacomodamientoHorizontal(origen) + di)
+                    td=0
+                }
+                if(td !== 0)
+                    $(elemento).css("left",  reacomodamientoHorizontal(origen) + td )
+                
+                // efecto traslate
+                $(".tips").css({transform: 'translateY(-12px)'})
+            }
+        
+            var posicionamientoAbajo = (origen) => {
+                elemento.css("top", reacomodamientoVertical(origen) + $(origen).outerHeight() + 5)
+                elemento.append(dameMueca("mueca-arr","top", -5, "left", "calc(50% - 2.5px)"))
+                var di = topeIzquierda()
+                var td = topeDerecha() 
+                if(di !== 0){
+                    elemento.css("left",  reacomodamientoHorizontal(origen) + di)
+                    td=0
+                }
+                if(td !== 0)
+                    $(elemento).css("left",  reacomodamientoHorizontal(origen) + td )
+                $(".tips").css({transform: 'translateY(12px)'})
+            }
+        
+        
+            var posicionamientoIzquierda = (origen) => {
+                elemento.css("left", reacomodamientoHorizontal(origen) - $(elemento).width() - 20)
+                elemento.append(dameMueca("mueca-der","right", -5, "top", "calc(50% - 3.5px)"))
+                var da = topeArriba()
+                if(da !== 0)
+                    $(elemento).css("top", reacomodamientoVertical(origen) + da)
+                $(".tips").css({transform: 'translateX(-12px)'})
+            }
+        
+        
+            var posicionamientoDerecha = (origen, resultado) => {
+                elemento.css("left", reacomodamientoHorizontal(origen) + $(elemento).width() + 20)
+                elemento.append(dameMueca("mueca-izq","left", -5, "top", "calc(50% - 3.5px)"))
+                var da = topeArriba()
+                if(da !== 0)
+                    $(elemento).css("top", reacomodamientoVertical(origen) + da)
+                $(".tips").css({transform: 'translateX(12px)'})
+            } 
+        
+        
+            const destroy = () => {
+                $(".tips-ele").off()
+            }
+            const inicializar = () => {
+        
+                /** Efecto hover  */
+                $(".tips-ele").hover(function( e ) {
+                    var posicion = $(e.target).data("posicion");
+                    var contenido = $(e.target).data("tips");
+        
+                    // Validar campos de entrada
+                    if(!validarTips(posicion, contenido))
+                        return 
+        
+                    // Crear elemento tips de manera dinámica
+                    elemento = $("<div class='tips'></div>")
+                    elemento.html(contenido)
+                    elemento.css("min-width", $(this).outerWidth())
+                    elemento.appendTo("body")
+        
+        
+                    /**
+                     * Selección de la ubicación del tips donde 
+                     * está el elemento origen
+                     */
+                    elemento.css("left",reacomodamientoHorizontal(this))
+                    elemento.css("top",reacomodamientoVertical(this))
+                    switch (posicion) {
+                        case "arriba":
+                            if(arriba(this)){
+                                posicionamientoArriba(this)
+                            }else if(abajo(this)){
+                                posicionamientoAbajo(this)
+                            }else if(izquierda(this)){
+                                posicionamientoIzquierda(this)
+                            }else if(derecha(this)){
+                                posicionamientoDerecha(this)
+                            }
+                          break;
+                        case "abajo":
+                            if(abajo(this)){
+                                posicionamientoAbajo(this)
+                            }else if(arriba(this)){
+                                posicionamientoArriba(this)
+                            }else if(izquierda(this)){
+                                posicionamientoIzquierda(this)
+                            }else if(derecha(this)){
+                                posicionamientoDerecha(this)
+                            }
+                          break;
+                        case "izquierda":
+                            if(izquierda(this)){
+                                posicionamientoIzquierda(this)
+                            }else if(derecha(this)){
+                                posicionamientoDerecha(this)
+                            }else if(arriba(this)){
+                                posicionamientoArriba(this)
+                            }else if(abajo(this)){
+                                posicionamientoAbajo(this)
+                            }
+                          break;
+                        case "derecha":
+                            if(derecha(this)){
+                                posicionamientoDerecha(this)
+                            }else if(izquierda(this)){
+                                posicionamientoIzquierda(this)
+                            }else if(arriba(this)){
+                                posicionamientoArriba(this)
+                            }else if(abajo(this)){
+                                posicionamientoAbajo(this)
+                            }
+                          break;
+                          
+                    }
+        
+                    
+                }, function() {
+                    if(elemento === null)
+                        return
+                    elemento.remove() // Destrucción del tips
+                    elemento = null;
+                })
+            }
+        
+            var ToolTips = {
+                iniciar: () => {
+                    inicializar()
+                },
+                destroy: () => destroy()
+            }
+        
+            window.ToolTips = ToolTips;
+        })()
+        
+        export default ToolTips;
         
     </pre>
     

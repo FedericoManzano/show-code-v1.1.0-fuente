@@ -59,14 +59,87 @@ import $ from "jquery"
         return resultado
     }
 
+    const colrearJson = (codigo) => {
+        let met = /{( *\n* *[a-zA-Z]+: *"{0,1}[a-zA-Z]+"* *,*)+ *\n* *\n* *}/
+        let bus = codigo.search(met)
+        let pal = ""
+        let aux = codigo.substring(bus, codigo.length)
+        let i = 0
+        
+        let retorno = ""
+
+        while(bus !== -1) { 
+            pal = ""
+            retorno = ""
+
+
+            while(aux[i] !== '}' && i < aux.length) {
+                pal += aux[i]
+                i ++
+            }
+    
+            if(aux[i] === '}') {
+                pal += aux[i]
+                i ++
+            }
+
+            codigo = codigo.replace(pal, `<span class='show-met'>${pal}</span>`)
+            aux = aux.substring(i + 1, aux.length)
+           
+            bus = aux.search(met)
+            i = bus
+        }
+
+        return codigo
+    }
+
+
+    const colorearNombre = (codigo) => {
+        let met = /[a-z]+ *[a-zA-Z0-9\$-_]+ *= *\(.*\) *=&gt; *\n*{/
+        let bus = codigo.search(met)
+        let pal = ""
+        let aux = codigo.substring(bus, codigo.length)
+        let i = 0
+       
+
+        while(bus !== -1) { 
+            pal = ""
+          
+            while(aux[i] !== ' ' && i < aux.length) {
+                i ++
+            }
+
+            while(aux[i] === ' ' && i < aux.length) {
+                i ++
+            }
+           
+            while(aux[i] !== '=') {
+                pal += aux[i]
+                i ++
+            }
+
+            codigo = codigo.replace(pal, `<span class='show-met'>${pal}</span>`)
+               
+            aux = aux.substring(i + 1, aux.length)
+           
+            bus = aux.search(met)
+            i = bus
+        }
+
+        return codigo
+    }
+
     const inicializar = () => {
         $(".cod-js").each((index, e) => {
             let codigo = $(e).html()
             $(e).text(codigo)
 
+            
             let resultado = colorearCadenas(codigo)
             resultado = colorearComentarios(resultado)
-
+            resultado = colrearJson(resultado)
+            resultado = colorearNombre(resultado)
+            
            
             resultado = resultado.replace(/=&gt;/g, "<span class='show-res'>=></span>")
             resultado = resultado.replace(/const /g, "<span class='show-res'>const </span>")
@@ -80,8 +153,8 @@ import $ from "jquery"
             resultado = resultado.replace(/import /g, "<span class='show-res'>import </span>")
             resultado = resultado.replace(/export /g, "<span class='show-res'>export </span>")
             resultado = resultado.replace(/from /g, "<span class='show-res'>from </span>")
-            resultado = resultado.replace(/true /g, "<span class='show-res'>true </span>")
-            resultado = resultado.replace(/false /g, "<span class='show-res'>false </span>")
+            resultado = resultado.replace(/true/g, "<span class='show-res'>true </span>")
+            resultado = resultado.replace(/false/g, "<span class='show-res'>false </span>")
             resultado = resultado.replace(/new /g, "<span class='show-res'>new </span>")
 
             resultado = resultado.replace(/if/g, "<span class='show-control'>if</span>")
@@ -90,7 +163,7 @@ import $ from "jquery"
             resultado = resultado.replace(/switch/g, "<span class='show-control'>switch</span>")
             resultado = resultado.replace(/case/g, "<span class='show-control'>case</span>")
             resultado = resultado.replace(/default/g, "<span class='show-control'>default</span>")
-            resultado = resultado.replace(/return /g, "<span class='show-control'>return </span>")
+            resultado = resultado.replace(/return/g, "<span class='show-control'>return </span>")
             resultado = resultado.replace(/do /g, "<span class='show-control'>do </span>")
             resultado = resultado.replace(/forEach/g, "<span class='show-control'>forEach</span>")
             resultado = resultado.replace(/for /g, "<span class='show-control'>for </span>")
@@ -106,7 +179,7 @@ import $ from "jquery"
             resultado = resultado.replace(/document\./g, "<span class='show-sistema'>document</span><span class='show-neutro'>.</span>")
             resultado = resultado.replace(/\( *document *\)/g, "<span class='show-neutro'>( </span><span class='show-sistema'>document</span><span class='show-neutro'> )</span>")
             resultado = resultado.replace(/alert\./g, "<span class='show-sistema'>alert</span><span class='show-neutro'>.</span>")
-            resultado = resultado.replace(/\(/g, "<span class='show-neutro'>(</span>")
+            /*resultado = resultado.replace(/\(/g, "<span class='show-neutro'>(</span>")
             resultado = resultado.replace(/\)/g, "<span class='show-neutro'>)</span>")
             resultado = resultado.replace(/\+/g, "<span class='show-neutro'>+</span>")
             resultado = resultado.replace(/{/g, "<span class='show-neutro'>{</span>")
@@ -119,22 +192,10 @@ import $ from "jquery"
             resultado = resultado.replace(/&gt;/g, "<span class='show-neutro'>&gt</span>")
             resultado = resultado.replace(/&gt;=/g, "<span class='show-neutro'>&gt=</span>")
             resultado = resultado.replace(/[^show-]\-/g, "<span class='show-neutro'>-</span>")
-            resultado = resultado.replace(/[^class=]=/g, "<span class='show-neutro'>=</span>")
+            resultado = resultado.replace(/[^class=]=/g, "<span class='show-neutro'>=</span>")*/
             
 
 
-
-
-            resultado = resultado.replace(/0/g, "<span class='show-numeros'>0</span>")
-            resultado = resultado.replace(/1/g, "<span class='show-numeros'>1</span>")
-            resultado = resultado.replace(/2/g, "<span class='show-numeros'>2</span>")
-            resultado = resultado.replace(/3/g, "<span class='show-numeros'>3</span>")
-            resultado = resultado.replace(/4/g, "<span class='show-numeros'>4</span>")
-            resultado = resultado.replace(/5/g, "<span class='show-numeros'>5</span>")
-            resultado = resultado.replace(/6/g, "<span class='show-numeros'>6</span>")
-            resultado = resultado.replace(/7/g, "<span class='show-numeros'>7</span>")
-            resultado = resultado.replace(/8/g, "<span class='show-numeros'>8</span>")
-            resultado = resultado.replace(/9/g, "<span class='show-numeros'>9</span>")
 
             
             $(e).html(resultado)
