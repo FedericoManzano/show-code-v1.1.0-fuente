@@ -142,11 +142,13 @@ import $ from "jquery"
        
         while(bus !== -1) { 
             let pal = ""
+            i++
             while(aux[i] !== '(') {
                 pal += aux[i]
                 i ++
             }
-            codigo = codigo.replace(new RegExp(pal, "g"), `<span class='show-llamadas'>${pal}</span>`)
+        
+            codigo = codigo.replace(new RegExp(`${pal}`, "g"), `<span class='show-llamadas'>${pal}</span>`)
             aux = aux.substring(i + 1, aux.length)
             bus = aux.search(met)
             i = bus

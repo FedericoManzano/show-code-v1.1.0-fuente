@@ -116,7 +116,7 @@ pre[class^=cod-] {
 }
 
 .show-met {
-  color: #0d703f !important;
+  color: #8a135c !important;
   font-weight: 500;
 }
 
@@ -134,8 +134,8 @@ pre[class^=cod-] {
 }
 
 .show-llamadas {
-  color: #006b4b !important;
-  font-weight: 300;
+  color: #8a135c !important;
+  font-weight: 400;
 }
 
 /*# sourceMappingURL=tema-claro.css.map */

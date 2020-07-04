@@ -131,7 +131,8 @@ import $ from "jquery"
     }
     
     const inicializar = (config = "html") => {
-        $(".cod-html").each((index, e) => {
+
+        $(".cod-html").each((index, e) => { 
             let codigo = ""
            
             if(config === "html") {
@@ -142,7 +143,6 @@ import $ from "jquery"
                 $(e).text(codigo)
             }
 
-    
             let resultado = ""
             for (let i = 0; i < codigo.length; i++) {
                 if(codigo[i] === '<' || codigo[i] === "&lt;") {

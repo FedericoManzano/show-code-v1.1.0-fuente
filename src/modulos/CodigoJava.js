@@ -3,8 +3,6 @@ import $ from "jquery"
 
 (function () {
 
-
-
     const colorearCadenas = (codigo) => {
         let resultado = ""
         for(let i = 0; i < codigo.length; i ++ ){
@@ -203,24 +201,46 @@ import $ from "jquery"
         return codigo
     }
 
+
+    const colorearLlamadas = (codigo) => {
+        let met = /\.[a-zA-Z0-9]+[\t ]*\(.*\)/
+        let bus = codigo.search(met)
+        let aux = codigo.substring(bus, codigo.length)
+        let i = 0
+       
+        while(bus !== -1) { 
+            let pal = ""
+            i++
+            while(aux[i] !== '(') {
+                pal += aux[i]
+                i ++
+            }
+        
+            codigo = codigo.replace(new RegExp(`${pal}`, "g"), `<span class='show-llamadas'>${pal}</span>`)
+            aux = aux.substring(i + 1, aux.length)
+            bus = aux.search(met)
+            i = bus
+        }
+
+        return codigo
+    }
+
     const inicializar = () => {
+
         $(".cod-java").each((index, e) => {
             let codigo = $(e).html()
             $(e).text(codigo)
             let resultado = codigo
-            
+
             resultado = colorearCadenas(resultado)
             resultado = colorearComentarios(resultado)
             resultado = colrearMetodo(resultado)
+            resultado = colorearLlamadas(resultado)
             resultado = colorearAttr(resultado)
             resultado = colorearVarClases(resultado)
             resultado = colorearSobre(resultado)
-            
-            
-           
-            
-            
-           
+
+
             resultado = resultado.replace(/=&gt;/g, "<span class='show-res'>=></span>")
             resultado = resultado.replace(/const /g, "<span class='show-res'>const </span>")
             resultado = resultado.replace(/let /g, "<span class='show-res'>let </span>")
@@ -306,10 +326,11 @@ import $ from "jquery"
             resultado = resultado.replace(/8/g, "<span class='show-numeros'>8</span>")
             resultado = resultado.replace(/9/g, "<span class='show-numeros'>9</span>")
 
-            
             $(e).html(resultado)
         })
     }
+
+    
 
     const CodigoJava = {
         iniciar: () => {

@@ -11,50 +11,52 @@
 <body>
 
     <pre class="cod-html">
-        <!-- Formulario de Bodystyle -->
-    
-        <div class="form-grupo-linea">
-            <label for="nombre">Nombre</label>
-            <input type="text" name="nombre">
-        </div>
-        <div class="form-grupo-linea mar-2">
-            <label for="apellido">Apellido</label>
-            <input type="text" name="apellido">
-        </div>
-        <div class="form-grupo-linea mar-2">
-            <label for="usuario">Usuario</label>
-            <input type="text" name="usuario">
-        </div>
-        <div class="form-grupo-linea mar-2">
-            <label for="select">Pais</label>
-            <select name="" id="" class="select">
-                <option value="1">Seleccionar País</option>
-                <option value="2">Argentina</option>
-                <option value="3">Perú</option>
-                <option value="4">Chile</option>
-                <option value="5">etc ...</option>
-            </select>
-        </div>
-         
-        <div class="form-grupo-linea mar-2">
-            <label for="clave">Clave</label>
-            <input type="password" name="clave">
-        </div>
-        <div class="form-grupo-linea mar-2">
-            <label for="repetir">Repetir</label>
-            <input type="password" name="Repetir">
-        </div>
-        <div class="d-flex just-final ali-centrada mar-2">
-            <div class="check-radio-grupo">
-                <input id="inline" type="checkbox" name="grupo1">
-                <label for="inline" class="checkbox">
-                    Acepto los terminos y condiciones del servicio
-                </label>
+ 
+        <div class="fila">
+            <div class="cs-6 cm-8">
+                <div class="form-grupo">
+                    <label for="correo">Correo</label>
+                    <input type="email" name="correo" id="i-correo">
+                </div>
             </div>
-            <a class="btn btn-azul mi-1 tips-ele desactivado" data-posicion="arriba" data-tips="Enviar formulario">
-                Enviar
-            </a>
-        </div> 
+            <div class="cs-6 cm-4">
+                <label class="badge-mje-izq badge-mje-verde mar-6">Ej: carlos@mail.com</label>   
+            </div>
+            <div class="cs-12">
+                <a class="btn fd-verde waves tips-ele" data-posicion="arriba" data-tips="Comprobar la existencia del correo">Verificar</a>
+            </div>
+            <div class="divisor"></div>
+         
+            <div class="cs-12">
+                <div class="form-grupo">
+                    <label for="passActual">Contraseña Actual</label>
+                    <input type="password" name="passActual" id="i-passActual">
+                </div>
+            </div>
+            <div class="cs-12">
+                <a class="btn fd-verde waves tips-ele" 
+                    data-posicion="arriba" 
+                    data-tips="Validar la contraseña actual">Verificar</a>
+            </div>
+             
+            <div class="cs-12 cm-6">
+                <div class="form-grupo">
+                    <label for="passNuevo">Contraseña Nueva</label>
+                    <input type="password" name="passNuevo" id="i-passNuevo">
+                    <small>De 8 a 10 caracteres alfanuméricos</small>
+                </div>
+            </div>
+            <div class="cs-12 cm-6">
+            <div class="form-grupo">
+                    <label for="passRepetir">Repetir</label>
+                    <input type="password" name="passRepetir" id="i-passRepetir">
+                </div>
+            </div>
+        </div>
+        <div class="d-flex just-centrada ali-centrada mar-3">
+            <a class="btn btn-azul waves">Cambiar</a>
+        </div>
+        
         
     </pre>
     
