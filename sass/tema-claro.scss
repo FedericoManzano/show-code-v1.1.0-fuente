@@ -7,6 +7,7 @@ pre[class^=cod-] {
     font-weight: 300 !important;
 
     .numeracion {
+
         background-color: rgb(240, 240, 240);
         span {
             background-color: rgb(240, 240, 240);
@@ -136,4 +137,9 @@ pre[class^=cod-] {
 .show-llamadas {
     color: rgb(138, 19, 92) !important;
     font-weight: 400;
+}
+
+.show-var {
+    color: rgb(0, 117, 126) !important;
+    font-weight: 500;
 }

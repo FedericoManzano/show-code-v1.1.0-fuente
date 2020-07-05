@@ -163,4 +163,9 @@ pre[class^=cod-] .numeracion span {
   font-weight: 400;
 }
 
+.show-var {
+  color: #00757e !important;
+  font-weight: 500;
+}
+
 /*# sourceMappingURL=tema-claro.css.map */

@@ -135,21 +135,18 @@ import numerar from "./Numeracion"
 
 
     const colorearLlamadas = (codigo) => {
-        let met = /\.[a-zA-Z0-9]+[\t ]*\(.*\)/
+        let met = /[a-zA-Z0-9_]+[\t ]*\([\n\t ]*[ a-zA-Z0-9_\:{}"=#,\t\n-]*,*\)[\t\n ]*{/
         let bus = codigo.search(met)
         let aux = codigo.substring(bus, codigo.length)
         let i = 0
        
         while(bus !== -1) { 
             let pal = ""
-            i++
             while(aux[i] !== '(') {
                 pal += aux[i]
                 i ++
             }
-        
-            codigo = codigo.replace(new RegExp(`${pal}`, "g"), 
-                `<span class='show-llamadas'>${pal}</span>`)
+            codigo = codigo.replace(new RegExp(`${pal}`), `<span class='show-var'>${pal}</span>`)
             aux = aux.substring(i + 1, aux.length)
             bus = aux.search(met)
             i = bus
@@ -167,6 +164,7 @@ import numerar from "./Numeracion"
             
             let resultado = colorearCadenas(codigo)
             resultado = colorearComentarios(resultado)
+            
             resultado = colorearNombre(resultado)
             resultado = colorearNombreFuncion(resultado)
             resultado = colorearLlamadas(resultado)
@@ -189,13 +187,15 @@ import numerar from "./Numeracion"
             resultado = resultado.replace(/false/g, "<span class='show-res'>false </span>")
             resultado = resultado.replace(/new /g, "<span class='show-res'>new </span>")
             resultado = resultado.replace(/interface/g, "<span class='show-res'>interface</span>")
-
+            resultado = resultado.replace(/require/g, "<span class='show-met'>require</span>")
             resultado = resultado.replace(/if[\n ]*\(/g, "<span class='show-control'>if</span>&nbsp;<span class='show-neutro'>(</span>")
             resultado = resultado.replace(/else/g, "<span class='show-control'>else</span>")
             resultado = resultado.replace(/while[\n ]*\(/g, "<span class='show-control'>while</span>&nbsp;<span class='show-neutro'>(</span>")
             resultado = resultado.replace(/switch/g, "<span class='show-control'>switch</span>")
             resultado = resultado.replace(/case/g, "<span class='show-control'>case</span>")
             resultado = resultado.replace(/default/g, "<span class='show-control'>default</span>")
+            resultado = resultado.replace(/extends/g, "<span class='show-control'>extends</span>")
+            resultado = resultado.replace(/static/g, "<span class='show-control'>static</span>")
             resultado = resultado.replace(/return/g, "<span class='show-control'>return </span>")
             resultado = resultado.replace(/do[\n ]*{/g, "<span class='show-control'>do</span>&nbsp;<span class='show-neutro'>{</span>")
             resultado = resultado.replace(/forEach/g, "<span class='show-control'>forEach</span>")
