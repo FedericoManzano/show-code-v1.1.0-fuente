@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="stylesheet" href="../dist/css/tema-oscuro.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <pre class="cod-c">
+
+        #ifndef RECTANGULO_H_INCLUDED
+        #define RECTANGULO_H_INCLUDED
+        
+        int rectangulo();
+        
+        #endif // RECTANGULO_H_INCLUDED
+
+
+
+        /* Inclusión de archivos */
+        #include "../federico/libs.c"
+        
+        #define ES_BLANCO(X)((X) == ' ' || (X) == '\t')
+        
+        typedef int (*t_cmp)(const void *, const void *);
+
+        int comp(void *e1, void *e2) {
+            int *ele1 = (int *)e1;
+            int *ele2 = (int *)e2;
+            return ele1->num - ele2->num;
+        }
+
+        typedef struct {
+            int dia, mes, año;
+        } t_fecha;
+        /* Función principal */
+        int main (int argc,char **argv)
+        {
+            char numero = ' ';
+            
+            do 
+            {
+                num --;
+            }while(num != 0);
+            return 0;
+        }
+    </pre>
+
+
+    <script src="../dist/js/sintax.js"></script>
+    <script>Show.ShowCInit()</script>
+</body>
+
+</html>

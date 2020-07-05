@@ -161,4 +161,14 @@ pre[class^=cod-] .numeracion span {
   color: red !important;
 }
 
+.show-c {
+  color: #df3c3c !important;
+  font-weight: 500;
+}
+
+.show-inc {
+  color: #ff8800 !important;
+  font-weight: 600;
+}
+
 /*# sourceMappingURL=tema-oscuro.css.map */

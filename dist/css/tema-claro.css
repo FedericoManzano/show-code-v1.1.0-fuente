@@ -168,4 +168,14 @@ pre[class^=cod-] .numeracion span {
   font-weight: 500;
 }
 
+.show-c {
+  color: #ca1b1b !important;
+  font-weight: 500;
+}
+
+.show-inc {
+  color: #fc0000 !important;
+  font-weight: 600;
+}
+
 /*# sourceMappingURL=tema-claro.css.map */
