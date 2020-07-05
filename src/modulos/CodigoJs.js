@@ -148,7 +148,8 @@ import numerar from "./Numeracion"
                 i ++
             }
         
-            codigo = codigo.replace(new RegExp(`${pal}`, "g"), `<span class='show-llamadas'>${pal}</span>`)
+            codigo = codigo.replace(new RegExp(`${pal}`, "g"), 
+                `<span class='show-llamadas'>${pal}</span>`)
             aux = aux.substring(i + 1, aux.length)
             bus = aux.search(met)
             i = bus
@@ -187,6 +188,7 @@ import numerar from "./Numeracion"
             resultado = resultado.replace(/true/g, "<span class='show-res'>true </span>")
             resultado = resultado.replace(/false/g, "<span class='show-res'>false </span>")
             resultado = resultado.replace(/new /g, "<span class='show-res'>new </span>")
+            resultado = resultado.replace(/interface/g, "<span class='show-res'>interface</span>")
 
             resultado = resultado.replace(/if[\n ]*\(/g, "<span class='show-control'>if</span>&nbsp;<span class='show-neutro'>(</span>")
             resultado = resultado.replace(/else/g, "<span class='show-control'>else</span>")

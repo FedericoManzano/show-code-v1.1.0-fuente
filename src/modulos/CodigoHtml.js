@@ -76,7 +76,8 @@ import numerar from "./Numeracion"
     }
 
     const esComentario = (codigo, pos) => {
-        if((codigo[pos] === '<' || codigo[pos] === '&lt;') && codigo[pos + 1] === '!' && codigo[pos + 2] === '-')
+        if((codigo[pos] === '<' || codigo[pos] === '&lt;') 
+            && codigo[pos + 1] === '!' && codigo[pos + 2] === '-')
             return true 
         return false
     }

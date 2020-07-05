@@ -186,7 +186,7 @@ import numerar from "./Numeracion"
             }
 
             if(retorno !== "new" && retorno !== "public")
-                codigo = codigo.replace(retorno + " " + pal, `<span class='show-retorno'>${retorno}</span>&nbsp;<span class='show-met'>${pal}</span>`)
+                codigo = codigo.replace(retorno + " " + pal, `<span class='show-control'>${retorno}</span> <span class='show-met'>${pal}</span>`)
             else {
                 codigo = codigo.replace(pal, `<span class='show-met'>${pal}</span>`)
             }
@@ -245,9 +245,6 @@ import numerar from "./Numeracion"
 
 
             resultado = resultado.replace(/=&gt;/g, "<span class='show-res'>=></span>")
-            resultado = resultado.replace(/const /g, "<span class='show-res'>const </span>")
-            resultado = resultado.replace(/let /g, "<span class='show-res'>let </span>")
-            resultado = resultado.replace(/var /g, "<span class='show-res'>var </span>")
             resultado = resultado.replace(/class /g, "<span class='show-res'>class </span>")
             resultado = resultado.replace(/public /g, "<span class='show-res'>public </span>")
             resultado = resultado.replace(/private /g, "<span class='show-res'>private </span>")
@@ -265,20 +262,22 @@ import numerar from "./Numeracion"
             resultado = resultado.replace(/true /g, "<span class='show-res'>true </span>")
             resultado = resultado.replace(/false /g, "<span class='show-res'>false </span>")
             resultado = resultado.replace(/new /g, "<span class='show-res'>new </span>")
-
-
+            resultado = resultado.replace(/interface/g, "<span class='show-control'>interface</span>")
+            
 
             resultado = resultado.replace(/try/g, "<span class='show-control'>try</span>")
             resultado = resultado.replace(/catch/g, "<span class='show-control'>catch</span>")
             resultado = resultado.replace(/if/g, "<span class='show-control'>if</span>")
-            resultado = resultado.replace(/int/g, "<span class='show-control'>int </span>")
-            resultado = resultado.replace(/double /g, "<span class='show-control'>double </span>")
-            resultado = resultado.replace(/boolean/g, "<span class='show-control'>boolean </span>")
-            resultado = resultado.replace(/long/g, "<span class='show-control'>long </span>")
+            resultado = resultado.replace(/int[\t ]+/g, "<span class='show-control'>int </span>")
+            resultado = resultado.replace(/double [\t ]+/g, "<span class='show-control'>double </span>")
+            resultado = resultado.replace(/boolean [\t ]+/g, "<span class='show-control'>boolean </span>")
+            resultado = resultado.replace(/long [\t ]+/g, "<span class='show-control'>long </span>")
             resultado = resultado.replace(/void/g, "<span class='show-control'>void </span>")
             resultado = resultado.replace(/extends /g, "<span class='show-control'>extends </span>")
             resultado = resultado.replace(/implements /g, "<span class='show-control'>implements </span>")
 
+            resultado = resultado.replace(/println/g, "<span class='show-llamadas'>println</span>")
+            resultado = resultado.replace(/print/g, "<span class='show-llamadas'>print</span>")
 
             resultado = resultado.replace(/true/g, "<span class='show-control'>true</span>")
             resultado = resultado.replace(/false/g, "<span class='show-control'>false</span>")
@@ -293,6 +292,7 @@ import numerar from "./Numeracion"
             resultado = resultado.replace(/for /g, "<span class='show-control'>for </span>")
             resultado = resultado.replace(/break/g, "<span class='show-control'>break</span>")
 
+            
 
             resultado = resultado.replace(/!/g, "<span class='show-res'>!</span>")
             

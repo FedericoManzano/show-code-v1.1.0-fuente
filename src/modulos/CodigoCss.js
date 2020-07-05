@@ -40,12 +40,19 @@ import numerar from "./Numeracion"
         while(codigo[pos] !== '}' && pos < codigo.length ) {
             while(!esComentario(codigo, pos) && codigo[pos] !== ':' && codigo[pos] !== '}' &&pos < codigo.length ) {
                 resultado += "<span class='show-prop'>" + codigo[pos] + "</span>"
-                pos ++
+                pos ++    
             }
             
             while( !esComentario(codigo, pos) && codigo[pos] !== '\n' && codigo[pos] !== '}' && pos < codigo.length ) {
-                resultado += "<span class='show-valor'>" + codigo[pos] + "</span>"
-                pos ++
+                if(codigo[pos] === '!') {
+                    while(codigo[pos] !== ';' && codigo[pos] !== '\n' && codigo[pos] !== ' ' && pos < codigo.length){
+                        resultado += "<span class='show-res'>" + codigo[pos] + "</span>"
+                        pos ++
+                    }
+                }else {
+                    resultado += "<span class='show-valor'>" + codigo[pos] + "</span>"
+                    pos ++
+                }
             }
 
             if( esComentario(codigo, pos) ) {
@@ -177,6 +184,8 @@ import numerar from "./Numeracion"
                     resultado += codigo[i]
                 }
             }
+
+            resultado = resultado.replace(/!important/g, "<span class='show-res'>!important</span>")
             $(e).html(resultado)
 
             if(lineas) 
