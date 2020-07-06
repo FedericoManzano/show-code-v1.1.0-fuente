@@ -192,3 +192,14 @@ retirarlas los hacemos de la siguiente manera.
 ![CSS Claro](/capturas/css-claro.png "CSS")
 ![CSS Oscuro](/capturas/css-oscuro.png "CSS")
 
+
+### Java 
+
+![JAVA Claro](/capturas/java-claro.png "JAVA")
+![JAVA Oscuro](/capturas/java-oscuro.png "JAVA")
+
+### C 
+
+![C Claro](/capturas/c-claro.png "C")
+![C Oscuro](/capturas/c-oscuro.png "C")
+

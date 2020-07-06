@@ -14,17 +14,9 @@
 
     <pre class="cod-c">
 
-        #ifndef RECTANGULO_H_INCLUDED
-        #define RECTANGULO_H_INCLUDED
-        
-        int rectangulo();
-        
-        #endif // RECTANGULO_H_INCLUDED
-
-
 
         /* Inclusión de archivos */
-        #include "../federico/libs.c"
+        #include <stdio.h>
         
         #define ES_BLANCO(X)((X) == ' ' || (X) == '\t')
         
@@ -35,11 +27,11 @@
             int *ele2 = (int *)e2;
             return ele1->num - ele2->num;
         }
-
         typedef struct {
             int dia, mes, año;
         } t_fecha;
         /* Función principal */
+
         int main (int argc,char **argv)
         {
             char numero = ' ';
