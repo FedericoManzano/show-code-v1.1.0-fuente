@@ -175,7 +175,11 @@ retirarlas los hacemos de la siguiente manera.
 </script>
 ```
 
-Enjoy
+## Capturas
+
+### Html 
+
+![Alt text](/capturas/html-claro "Optional Title")
 
 
 
