@@ -1,29 +1,37 @@
-# Show Code (v1.0.0)
+# Show Code (v1.1.0)
 
 Librería para resaltar el código fuente en páginas web.
 
 ## Código
 
-Para esta primera versión podemos resartar el código de `html`, `js` y `css`. 
-En versiones posteriores vamos a agregar más lenguajes.
+En esta versión se incorparan los lenguajes `c`, `java`.
+Los lenguajes incluidos son `html`, `js`, `css`, `java`, `c`. 
 
 
-## Descarga 
+## GetStarted 
 
-Para disponer de la librería podemos hacerlo a través del CDN de los archivos correspondientes a 
-los temas y al archivo `sintax.min.js` que contiene la lógica para el funcionamiento.
+La forma más rápida de disponer de la librería es a través del CDN de los archivos de estilos `css` y
+el archivo con la lógica `js`.
+
+### Archivos de stilos (CSS)
+
+Debemos elegir uno de los dos archivos de estilos para añadir a la cabecera de nuestro documento html.
+Disponemos de dos temas con colores claros y oscuros.
 
 #### CDN Tema Claro
 
-[https://ghcdn.rawgit.org/FedericoManzano/show-code-v1.0.0-fuente/master/dist/css/tema-claro.min.css](https://ghcdn.rawgit.org/FedericoManzano/show-code-v1.0.0-fuente/master/dist/css/tema-claro.min.css)
+[https://ghcdn.rawgit.org/FedericoManzano/show-code-v1.1.0-fuente/master/dist/css/tema-claro.min.css](https://ghcdn.rawgit.org/FedericoManzano/show-code-v1.1.0-fuente/master/dist/css/tema-claro.min.css)
 
 #### CDN Tema Oscuro
 
-[https://ghcdn.rawgit.org/FedericoManzano/show-code-v1.0.0-fuente/master/dist/css/tema-oscuro.min.css](https://ghcdn.rawgit.org/FedericoManzano/show-code-v1.0.0-fuente/master/dist/css/tema-oscuro.min.css)
+[https://ghcdn.rawgit.org/FedericoManzano/show-code-v1.1.0-fuente/master/dist/css/tema-oscuro.min.css](https://ghcdn.rawgit.org/FedericoManzano/show-code-v1.1.0-fuente/master/dist/css/tema-oscuro.min.css)
 
-#### CDN de show.min.js
+### Archivos JS
 
-[https://ghcdn.rawgit.org/FedericoManzano/show-code-v1.0.0-fuente/master/dist/js/sintax.min.js](https://ghcdn.rawgit.org/FedericoManzano/show-code-v1.0.0-fuente/master/dist/js/sintax.min.js)
+Luego debemos agregar el CDN del archivos sintax.js encima de la etiqueta de cierre del `</body>` en 
+nuestro documento html.
+
+[https://ghcdn.rawgit.org/FedericoManzano/show-code-v1.1.0-fuente/master/dist/js/sintax.min.js](https://ghcdn.rawgit.org/FedericoManzano/show-code-v1.1.0-fuente/master/dist/js/sintax.min.js)
 
 ### Plantilla
 
@@ -35,13 +43,13 @@ los temas y al archivo `sintax.min.js` que contiene la lógica para el funcionam
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Tema oscuro -->
-    <link rel="stylesheet" href="https://ghcdn.rawgit.org/FedericoManzano/show-code-v1.0.0-fuente/master/dist/css/tema-claro.min.css">
+    <link rel="stylesheet" href="https://ghcdn.rawgit.org/FedericoManzano/show-code-v1.1.0-fuente/master/dist/css/tema-claro.min.css">
 
     <!-- Tema claro -->
-    <link rel="stylesheet" href="https://ghcdn.rawgit.org/FedericoManzano/show-code-v1.0.0-fuente/master/dist/css/tema-oscuro.min.css">
+    <link rel="stylesheet" href="https://ghcdn.rawgit.org/FedericoManzano/show-code-v1.1.0-fuente/master/dist/css/tema-oscuro.min.css">
 
 
-    <title>Plantilla Show V1.0.0</title>
+    <title>Plantilla Show V1.1.0</title>
 </head>
 <body>
 
@@ -57,49 +65,44 @@ los temas y al archivo `sintax.min.js` que contiene la lógica para el funcionam
         <!-- Aca va lo que queremos resaltar js --->
     </pre>
 
-    <script src="https://ghcdn.rawgit.org/FedericoManzano/show-code-v1.0.0-fuente/master/dist/js/sintax.min.js"></script>
-    
+    <script src="https://ghcdn.rawgit.org/FedericoManzano/show-code-v1.1.0-fuente/master/dist/js/sintax.min.js"></script>
+    <script>
+
+        // Sólo inicializamos los lenguajes que queremos utilizar 
+        // En este caso inicializa todos.
+        Show.CodigoHtmlInit()
+        Show.CodigoCssInit()
+        Show.CodigoJsInit()
+        Show.CodigoCInit()
+        Show.CodigoJavaInit()
+    </script>
 </body>
 </html>
 ```
 En esta plantilla tenemos que decidir que tema utilizar, el tema claro o el tema oscuro.
 
-#### Inicializar
-
-Lo que debemos hacer después es inicializar los módulos correspondientes a cada lenguaje a utilizar. 
-(Si solo utilizamos `html` solo inicializamos el módulo de html). 
-
-```html
-<!-- Código que va debajo del CDN de sixtax.js -->
-<script> 
-    // En este caso inicializamos los tres módulos pero no es necesario. 
-    Show.ShowHtmlInit()
-    Show.ShowCssInit()
-    Show.ShowJsInit()
-</script>
-```
 
 ### Precompilado
 
 Podemos disponer de los archivos de la librería sin necesidad de utilizar su CDN descargando 
 el archivo pre-compilado a través del siguiente enlace.
 
-[https://github.com/FedericoManzano/show-code-v1.0.0-precompilado/archive/master.zip](https://github.com/FedericoManzano/show-code-v1.0.0-precompilado/archive/master.zip)
+[https://github.com/FedericoManzano/show-code-v1.1.0-precompilado/archive/master.zip](https://github.com/FedericoManzano/show-code-v1.1.0-precompilado/archive/master.zip)
 
 ## Node js
 
-Podemos disponenr de la librería a través de los gestores de paquetes de NodeJs a través de los siguientes comandos.
+Podemos disponer de la librería a través de los gestores de paquetes de NodeJs a través de los siguientes comandos.
 
 ### NPM
 
 ```js
-npm i show-sintax
+npm i show-sintax@1.1.0 // Si no agregamos @x.x.x va a descarlar la ultima versión
 ```
 
 ### yarn 
 
 ```js
-yarn add show-sintax
+yarn add show-sintax@1.1.0 // Si no agregamos @x.x.x va a descarlar la ultima versión
 ```
 
 ## Proyectos SPA
@@ -111,6 +114,8 @@ correspondientes a cada lenguaje e inicializarlo.
 import CodigoHtml from "show-code/src/modulos/CodigoHtml";
 import CodigoCss from "show-code/src/modulos/CodigoCss";
 import CodigoJs from "show-code/src/modulos/CodigoJs";
+import CodigoJava from "show-code/src/modulos/CodigoJava";
+import CodigoC from "show-code/src/modulos/CodigoC";
 ```
 
 Luego de esto lo inicializamos donde corresponda llamando a la función iniciar. 
@@ -129,7 +134,8 @@ en proyectos SPA trabajamos con la interpolación de contenedo a través de la s
 inicializar el módulo de html de la siguiente manera.
 
 ```js
-CodigoHtml.iniciar("texto")
+// Solo en proyectos SPA. Que utiliza interpolación
+CodigoHtml.iniciar({tipo: "texto"})
 ```
 
 Le añadimos el parámetro texto a la función de inicialización.
@@ -151,9 +157,25 @@ Simplemente declaramos una etqueta de html `pre` y le agregamos la clase `cod-ht
 </pre>
 ```
 
-Utilizamos las clases cod-[lenguale] donde lenguaje son (html, css, js) respectivamente.
+Las clases agregadas a la etiqueta `pre` sin cod-[lenguaje] => `html` `js` `css` `java` `c`.
 
-Enjoy.
+## Inicialización
+
+Hasta el momento vimos como inicializar los módulos por defecto. Contamos desde la versión 1.1.0 la posibilidad de añadir la numeración a las lineas de código (por defecto aparacen) pero si queremos 
+retirarlas los hacemos de la siguiente manera. 
+
+```html
+<script>
+    // Con esto deshabilitamos números de linea de la parte izquierda.
+    Show.CodigoHtmlInit({lineas: false})
+    Show.CodigoCssInit({lineas: false})
+    Show.CodigoJsInit({lineas: false})
+    Show.CodigoJavaInit({lineas: false})
+    Show.CodigoCInit({lineas: false})
+</script>
+```
+
+Enjoy
 
 
 
