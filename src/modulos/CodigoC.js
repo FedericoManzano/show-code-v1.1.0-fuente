@@ -225,6 +225,7 @@ import numerar from "./Numeracion"
             resultado = resultado.replace(/while[\t ]*\(/g, "<span class='show-res'>while </span></span><span class='show-neutro'>(</span>")
             resultado = resultado.replace(/for[\t ]*\(/g, "<span class='show-res'>for </span></span><span class='show-neutro'>(</span>")
             resultado = resultado.replace(/do[\t\n ]*{/g, "<span class='show-res'>do </span></span><span class='show-neutro'>{</span>")
+            resultado = resultado.replace(/else /g, "<span class='show-res'>else </span>")
             
             resultado = resultado.replace(/case/g, "<span class='show-res'>case</span>")
             resultado = resultado.replace(/break/g, "<span class='show-res'>break</span>")
