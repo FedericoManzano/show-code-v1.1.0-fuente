@@ -180,7 +180,7 @@ retirarlas los hacemos de la siguiente manera.
 ### Html 
 
 ![Html Claro](/capturas/html-claro.png "Optional Title")
-
+![Html Claro](/capturas/html-oscuro.png "Optional Title")
 
 
 
