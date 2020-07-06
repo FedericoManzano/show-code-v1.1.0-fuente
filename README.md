@@ -70,11 +70,11 @@ nuestro documento html.
 
         // Sólo inicializamos los lenguajes que queremos utilizar 
         // En este caso inicializa todos.
-        Show.CodigoHtmlInit()
-        Show.CodigoCssInit()
-        Show.CodigoJsInit()
-        Show.CodigoCInit()
-        Show.CodigoJavaInit()
+        Show.ShowHtmlInit()
+        Show.ShowCssInit()
+        Show.ShowJsInit()
+        Show.ShowCInit()
+        Show.ShowJavaInit()
     </script>
 </body>
 </html>
@@ -167,11 +167,11 @@ retirarlas los hacemos de la siguiente manera.
 ```html
 <script>
     // Con esto deshabilitamos números de linea de la parte izquierda.
-    Show.CodigoHtmlInit({lineas: false})
-    Show.CodigoCssInit({lineas: false})
-    Show.CodigoJsInit({lineas: false})
-    Show.CodigoJavaInit({lineas: false})
-    Show.CodigoCInit({lineas: false})
+    Show.ShowHtmlInit({lineas: false})
+    Show.ShowCssInit({lineas: false})
+    Show.ShowJsInit({lineas: false})
+    Show.ShowCInit({lineas: false})
+    Show.ShowJavaInit({lineas: false})
 </script>
 ```
 
