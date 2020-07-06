@@ -179,7 +179,7 @@ retirarlas los hacemos de la siguiente manera.
 
 ### Html 
 
-![Alt text](/capturas/html-claro "Optional Title")
+![Html Claro](/capturas/html-claro.png "Optional Title")
 
 
 
