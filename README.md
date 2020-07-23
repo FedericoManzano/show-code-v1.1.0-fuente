@@ -1,4 +1,9 @@
-# Show Code (v1.1.0)
+# Show Code
+
+[![Documentación](https://img.shields.io/badge/showsintax-v1.1.0-green.svg)](https://bodystyle.000webhostapp.com)
+[![Licencia](https://img.shields.io/badge/MIT-1.1.0-blue.svg)](https://github.com/FedericoManzano/show-code/blob/master/LICENCE)
+[![jquery](https://img.shields.io/badge/jquery-3.5.0-yellow.svg)](https://jquery.com/)
+[![Npm](https://img.shields.io/badge/NPM-1.1.0-blue.svg)](https://www.npmjs.com/package/show-sintax)
 
 Librería para resaltar el código fuente en páginas web.
 
@@ -20,18 +25,18 @@ Disponemos de dos temas con colores claros y oscuros.
 
 #### CDN Tema Claro
 
-[https://ghcdn.rawgit.org/FedericoManzano/show-code-v1.1.0-fuente/master/dist/css/tema-claro.min.css](https://ghcdn.rawgit.org/FedericoManzano/show-code-v1.1.0-fuente/master/dist/css/tema-claro.min.css)
+[https://rawcdn.githack.com/FedericoManzano/show-code/a5e13aa03697269a68b185b555034f8476fa6a22/dist/css/tema-claro.min.css](https://rawcdn.githack.com/FedericoManzano/show-code/a5e13aa03697269a68b185b555034f8476fa6a22/dist/css/tema-claro.min.css)
 
 #### CDN Tema Oscuro
 
-[https://ghcdn.rawgit.org/FedericoManzano/show-code-v1.1.0-fuente/master/dist/css/tema-oscuro.min.css](https://ghcdn.rawgit.org/FedericoManzano/show-code-v1.1.0-fuente/master/dist/css/tema-oscuro.min.css)
+[https://rawcdn.githack.com/FedericoManzano/show-code/a5e13aa03697269a68b185b555034f8476fa6a22/dist/css/tema-oscuro.min.css](https://rawcdn.githack.com/FedericoManzano/show-code/a5e13aa03697269a68b185b555034f8476fa6a22/dist/css/tema-oscuro.min.css)
 
 ### Archivos JS
 
 Luego debemos agregar el CDN del archivos sintax.js encima de la etiqueta de cierre del `</body>` en 
 nuestro documento html.
 
-[https://ghcdn.rawgit.org/FedericoManzano/show-code-v1.1.0-fuente/master/dist/js/sintax.min.js](https://ghcdn.rawgit.org/FedericoManzano/show-code-v1.1.0-fuente/master/dist/js/sintax.min.js)
+[https://rawcdn.githack.com/FedericoManzano/show-code/a5e13aa03697269a68b185b555034f8476fa6a22/dist/js/sintax.min.js](https://rawcdn.githack.com/FedericoManzano/show-code/a5e13aa03697269a68b185b555034f8476fa6a22/dist/js/sintax.min.js)
 
 ### Plantilla
 
@@ -42,11 +47,11 @@ nuestro documento html.
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Tema oscuro -->
-    <link rel="stylesheet" href="https://ghcdn.rawgit.org/FedericoManzano/show-code-v1.1.0-fuente/master/dist/css/tema-claro.min.css">
-
     <!-- Tema claro -->
-    <link rel="stylesheet" href="https://ghcdn.rawgit.org/FedericoManzano/show-code-v1.1.0-fuente/master/dist/css/tema-oscuro.min.css">
+    <link rel="stylesheet" href="https://rawcdn.githack.com/FedericoManzano/show-code/a5e13aa03697269a68b185b555034f8476fa6a22/dist/css/tema-claro.min.css">
+
+    <!-- Tema oscuro -->
+    <link rel="stylesheet" href="https://rawcdn.githack.com/FedericoManzano/show-code/a5e13aa03697269a68b185b555034f8476fa6a22/dist/css/tema-oscuro.min.css">
 
 
     <title>Plantilla Show V1.1.0</title>
@@ -65,7 +70,7 @@ nuestro documento html.
         <!-- Aca va lo que queremos resaltar js --->
     </pre>
 
-    <script src="https://ghcdn.rawgit.org/FedericoManzano/show-code-v1.1.0-fuente/master/dist/js/sintax.min.js"></script>
+    <script src="https://rawcdn.githack.com/FedericoManzano/show-code/a5e13aa03697269a68b185b555034f8476fa6a22/dist/js/sintax.min.js"></script>
     <script>
 
         // Sólo inicializamos los lenguajes que queremos utilizar 
