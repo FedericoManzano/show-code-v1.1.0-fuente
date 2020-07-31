@@ -24,13 +24,14 @@
   "author": "Federico Manzano",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.10.5",
-    "@babel/preset-env": "^7.11.0",
+    "dependabot/npm_and_yarn/babel/preset-env-7.11.0",
+    "@babel/core": "^7.11.0",
+    "@babel/preset-env": "^7.10.4",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.1.0",
     "lodash": "^4.17.19",
-    "webpack": "^4.44.0",
+    "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
