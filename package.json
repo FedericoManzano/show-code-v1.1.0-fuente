@@ -24,7 +24,6 @@
   "author": "Federico Manzano",
   "license": "MIT",
   "devDependencies": {
-    "dependabot/npm_and_yarn/babel/preset-env-7.11.0",
     "@babel/core": "^7.11.0",
     "@babel/preset-env": "^7.10.4",
     "babel-cli": "^6.26.0",
