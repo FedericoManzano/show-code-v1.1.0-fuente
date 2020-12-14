@@ -30,7 +30,7 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^8.1.0",
     "lodash": "^4.17.20",
-    "webpack": "^4.44.2",
+    "webpack": "^5.10.1",
     "webpack-cli": "^4.2.0"
   },
   "dependencies": {
