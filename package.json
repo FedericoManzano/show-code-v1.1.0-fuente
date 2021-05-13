@@ -24,7 +24,7 @@
   "author": "Federico Manzano",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.12.3",
+    "@babel/core": "^7.14.2",
     "@babel/preset-env": "^7.13.10",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
